@@ -1,5 +1,4 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
 
 call plug#begin('~/vimfiles/plugged')
 
