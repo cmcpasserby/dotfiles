@@ -1,6 +1,6 @@
 set nocompatible
 
-call plug#begin('~/vimfiles/plugged')
+call plug#begin('~/.vim/plugged')
 
 Plug 'vim-scripts/Wombat'
 Plug 'tpope/vim-surround'
@@ -17,7 +17,7 @@ syntax enable
 colorscheme wombat
 
 set encoding=utf-8
-set guifont=JetBrains\ Mono\ NL:h12
+set guifont=Cascadia\ Code\ Mono\ PL:h9
 
 set number
 set relativenumber
@@ -70,8 +70,15 @@ nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
 " Basic Leader Binds
-map <Leader>y "*y
-map <Leader>p "*p
+if has("clipboard")
+    if has("win32")
+        map <Leader>y "*y
+        map <Leader>p "*p
+    elseif has("unix")
+        map <Leader>y "+y
+        map <Leader>p "+p
+    endif
+endif
 
 " working dir to file
 map <Leader>cd :cd %:p:h<CR>:pwd<CR>
@@ -80,4 +87,7 @@ map <Leader>cd :cd %:p:h<CR>:pwd<CR>
 let g:airline_powerline_fonts = 1
 
 set guioptions-=T
+
+" Danger Zone
+set mouse=a
 
