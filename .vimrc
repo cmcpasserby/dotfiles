@@ -8,6 +8,8 @@ Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'vim-scripts/ShaderHighLight'
+Plug 'mbbill/undotree'
 
 call plug#end()
 
@@ -17,7 +19,7 @@ syntax enable
 colorscheme wombat
 
 set encoding=utf-8
-set guifont=Cascadia\ Code\ Mono\ PL:h9
+set guifont=JetBrains\ Mono\ NL:h12
 
 set number
 set relativenumber
@@ -69,24 +71,28 @@ nnoremap g; g;zz
 nnoremap g, g,zz
 nnoremap <c-o> <c-o>zz
 
-" Basic Leader Binds
+" OS Clipboard
 if has("clipboard")
     if has("win32")
-        map <Leader>y "*y
-        map <Leader>p "*p
-    elseif has("unix")
-        map <Leader>y "+y
-        map <Leader>p "+p
+        nnoremap <Leader>y "*y
+        nnoremap <Leader>p "*p
+    else 
+        nnoremap <Leader>y "+y
+        nnoremap <Leader>p "+p
     endif
 endif
 
+"
+nnoremap <Leader>u :UndotreeToggle<CR>
+
 " working dir to file
-map <Leader>cd :cd %:p:h<CR>:pwd<CR>
+nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " AirLine
 let g:airline_powerline_fonts = 1
 
 set guioptions-=T
+set termguicolors
 
 " Danger Zone
 set mouse=a
