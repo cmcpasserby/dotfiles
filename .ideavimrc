@@ -1,0 +1,42 @@
+set number
+set surround
+set scrolloff=10
+
+set ideastatusicon=gray
+set ideamarks
+
+command! W :w
+vnoremap < <gv
+vnoremap > >gv
+noremap H ^
+noremap L $
+
+" Keep search mathces in the middle of the window
+nnoremap n nzzzv
+nnoremap N Nzzzv
+
+" Mappings
+map <C-]> :action GotoDeclaration<CR>
+map <C-e> :action RecentFiles<CR>
+
+" Basic Remaps OS like commands
+map <Leader>y "*y
+map <Leader>p "*p
+map <Leader>f :action Find<CR>
+map <Leader>r :action Replace<CR>
+
+
+" Leader Mappings
+map <Leader>s :action SaveAll<CR>
+map <Leader>v :action Tool_Vim_Vim<CR>
+map <Leader>r :action Run<CR>
+map <Leader>d :action Debug<CR>
+map <Leader>g :action SelectNextOccurrence<CR>
+map <Leader>G :action UnselectPreviousOccurrence<CR>
+
+map <Leader>[ :action Back<CR>
+map <Leader>] :action Forward<CR>
+map <Leader>b :action GotoDeclaration<CR>
+
+" Rider Leader Commands
+" map <Leader>p :action TriggerPlayInUnity<CR>
