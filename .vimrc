@@ -10,14 +10,18 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ShaderHighLight'
 Plug 'mbbill/undotree'
+Plug 'cespare/vim-toml'
 
 call plug#end()
+
+set termguicolors
 
 filetype plugin indent on
 syntax enable
 
 colorscheme wombat
 
+set cursorline
 set encoding=utf-8
 set guifont=JetBrains\ Mono\ NL:h12
 
@@ -74,26 +78,32 @@ nnoremap <c-o> <c-o>zz
 " OS Clipboard
 if has("clipboard")
     if has("win32")
-        nnoremap <Leader>y "*y
-        nnoremap <Leader>p "*p
+        vnoremap <Leader>y "*y
+        vnoremap <Leader>p "*p
     else 
-        nnoremap <Leader>y "+y
-        nnoremap <Leader>p "+p
+        vnoremap <Leader>y "+y
+        vnoremap <Leader>p "+p
     endif
 endif
 
-"
 nnoremap <Leader>u :UndotreeToggle<CR>
 
 " working dir to file
 nnoremap <Leader>cd :cd %:p:h<CR>:pwd<CR>
 
+" Markdown / ToDo
+function MD_Date()
+    let date = strftime("%F")
+    exe "normal! a" . date . "\n" . repeat("-", strlen(date)) . "\<Esc>"
+endfunction
+
+nnoremap <Leader>md :call MD_Date()<CR>
+nnoremap <Leader><Space> :noh<CR>
+
 " AirLine
 let g:airline_powerline_fonts = 1
 
-set guioptions-=T
-set termguicolors
-
 " Danger Zone
+set guioptions-=T
 set mouse=a
 

@@ -1,42 +1,88 @@
+" enableing both number and relativenumber gives you relative numbers
+" but with the current line displaying its real line number isntead of
+" realtive
 set number
-set surround
-set scrolloff=10
+set relativenumber
 
+" enable surround plugin
+set surround 
+
+" ensures there is always 10 or more lines of space between the cursor and the
+" top or bottom of the screen
+set scrolloff=10  
+            
+set incsearch
+set hlsearch
+set ignorecase
+set smartcase
+
+" ideavim icon in statusbar is now grey
 set ideastatusicon=gray
+
+" vim global marks now use idea's bookmarks, marks with a capital letter show
+" up in the gutter and are part of the regular bookmark system in idea
 set ideamarks
 
+" clear search results
+nnoremap <Leader><Space> :noh<CR>
+
+" i am lazy and sometimes end up with a capital W when trying to save
 command! W :w
+
+" use < and > to change the indentation level of selection
 vnoremap < <gv
 vnoremap > >gv
+
+" H and L co to the start or end of line contents (ignores white space)
+" feels more natural to me that capital H and L are just a more extream
+" version of h and l
 noremap H ^
-noremap L $
+noremap L g_
 
 " Keep search mathces in the middle of the window
+" when pressing n or N to jump between search results from, these ensures the
+" current item is center of screen
 nnoremap n nzzzv
 nnoremap N Nzzzv
 
 " Mappings
-map <C-]> :action GotoDeclaration<CR>
-map <C-e> :action RecentFiles<CR>
+" Just some remaps where things were overlapping with the ide so thse commands
+" work on both windows and mac
+nnoremap <C-]> :action GotoDeclaration<CR>
+nnoremap <C-e> :action RecentFiles<CR>
 
-" Basic Remaps OS like commands
-map <Leader>y "*y
-map <Leader>p "*p
-map <Leader>f :action Find<CR>
-map <Leader>r :action Replace<CR>
+" yank and paste from OS clipboard (mostly for on windows since ctrl+c/v
+" overlap with other vim commands)
+nnoremap <Leader>y "*y 
+nnoremap <Leader>p "*p
 
+nnoremap <Leader>f :action Find<CR>
+nnoremap <Leader>r :action Replace<CR>
 
 " Leader Mappings
-map <Leader>s :action SaveAll<CR>
-map <Leader>v :action Tool_Vim_Vim<CR>
-map <Leader>r :action Run<CR>
-map <Leader>d :action Debug<CR>
+" save all docs
+nnoremap <Leader>s :action SaveAll<CR>
+
+" made a custom tool that launches mvim with the current file and line
+nnoremap <Leader>v :action Tool_Vim_Vim<CR>
+
+" run with current run config
+nnoremap <Leader>r :action Run<CR>
+" debug with current run config
+nnoremap <Leader>d :action Debug<CR>
+
+" used for multi-cursor, lets me great a curor and selection on the next
+" occorance of the current symbol or selection
 map <Leader>g :action SelectNextOccurrence<CR>
 map <Leader>G :action UnselectPreviousOccurrence<CR>
 
-map <Leader>[ :action Back<CR>
-map <Leader>] :action Forward<CR>
-map <Leader>b :action GotoDeclaration<CR>
+" back and forward 
+nnoremap <Leader>[ :action Back<CR>
+nnoremap <Leader>] :action Forward<CR>
 
-" Rider Leader Commands
-" map <Leader>p :action TriggerPlayInUnity<CR>
+" got to decalartion since on windows this is normally ctrl+b and overlaps
+" with vim
+nnoremap <Leader>b :action GotoDeclaration<CR>
+
+" shortcut to undo history window
+nnoremap <Leader>u :action LocalHistory.ShowHistory<CR>
