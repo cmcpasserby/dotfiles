@@ -11,6 +11,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'vim-scripts/ShaderHighLight'
 Plug 'mbbill/undotree'
 Plug 'cespare/vim-toml'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 call plug#end()
 
@@ -51,6 +53,10 @@ set smartcase
 
 " W for save
 command! W :w
+
+" fzf binds
+noremap <silent> <c-p> :GFiles<CR>
+noremap <silent> <Leader>f :Files<CR>
 
 " Sort Lines
 vnoremap <Leader>s :sort<CR>
