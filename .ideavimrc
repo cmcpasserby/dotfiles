@@ -71,6 +71,10 @@ nnoremap <Leader>r :action Run<CR>
 " debug with current run config
 nnoremap <Leader>d :action Debug<CR>
 
+" GoLand Binds
+nnoremap <Leader>gf :action GoFmtFileAction<CR>
+nnoremap <Leader>gs :action GoShareInPlaygroundAction<CR>
+
 " used for multi-cursor, lets me great a curor and selection on the next
 " occorance of the current symbol or selection
 map <Leader>g :action SelectNextOccurrence<CR>
